@@ -28,6 +28,11 @@
 　　ArrayList 实现**java.io.Serializable 接口**，这意味着ArrayList**支持序列化**，**能通过序列化去传输**。
 
 　　和 Vector 不同，**ArrayList 中的操作不是线程安全的**！所以，建议在单线程中才使用 ArrayList，而在多线程中可以选择 Vector 或者  CopyOnWriteArrayList。
+
+### ArrayList支持方法
+特有方法：
+- void trimToSize() 可以该方法 最小化存储， 使得底层数组的长度等于当前数组的size。
+
 ### ArrayList核心源码
 
 ```java

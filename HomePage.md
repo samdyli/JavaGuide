@@ -53,6 +53,46 @@
 
 ### 容器
 
+容器家族
+
+![](image\java容器家族族谱.png)
+
+![](image\Java容器家族族谱补充-Queue.png)
+
+Collection:参见：[java collections framework](<https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html>)
+
+列表：
+
+- 非线程安全的列表
+	均允许空值。
+	- ArrayList
+		- 扩容策略：初始化列表长度为0， 第一次扩容长度为10， 之后数组长度翻倍扩容
+		- 支持随机访问，clone和序列化
+	- LinkedList
+		- 底层通过双端链表（实现Deque)实现。除了实现List接口还实现了(Deque接口),不支持随机访问。
+- 安全的列表
+	- Vector
+		- 使用synchronized修饰对应的方法保证对应的线程安全。
+		- 扩容策略：初始列表长度为10(猜测：Vector是一个线程安全的容器，比普通的ArrayList性能开销更大，使用空容器是一个不太明智的选择。大概率会往容器添加1个以上的元素。)，如果指定大于0的capacityIncrement，每次扩容大小为capacityIncrement。如果不指定或者capacityIncrement小于0，则按照翻倍的策略扩容。
+- Set：
+- Stack
+- Queue
+	- Queue接口(add/offer,remove/poll,element/peek)
+		- 带返回值的方法：boolean add(E e)
+		- 抛异常的方法：    boolean offer(E e)
+	- Deque(addFirst/addLast/offerFirst/offerLast, removeFirst/removeLast/pollFirst/pollLast,getFirst/getLast/peekFirst/peekLast)
+		- LinkedList：
+		- ArrayDeque：
+			- 底层通过自动扩容数组实现。没有空间限制、线程不安全、不允许空值。
+			- 用作栈快于Stack，用作队列时快于LinkedList。大多数操作O(1)时间内完成，处理remove、removeFirstOccurrence、removeLastOccurrence、contains、iterator.remove() 以及批量操作,它们在O(n)时间内完成。
+
+### 方法比较
+add/remove/element vs offer/poll/peek 
+
+offer/poll/peek用在大小限制的队列或者Deque时， 如果超出了大小限制返回false。
+add/remove/element在超过队列限制情况下抛出IllegalStateException异常。
+
+
 * [Java容器常见面试题/知识点总结](java/collection/Java集合框架常见面试题.md)
 * [ArrayList 源码学习](java/collection/ArrayList.md)  
 * [LinkedList 源码学习](java/collection/LinkedList.md)   
